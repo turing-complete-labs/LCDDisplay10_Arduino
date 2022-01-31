@@ -57,9 +57,10 @@ const uint8_t DIGIT_SEGMENTS[] = {
 
 uint8_t _buffer[BUFFER_SIZE];
 
-void LCDDisplay10::begin(uint8_t sda, uint8_t scl)
+void LCDDisplay10::begin(TwoWire *theWire)
 {
-    Wire.begin();
+    _wire = theWire;
+    _wire->begin();
     reset();
 }
 
@@ -71,19 +72,19 @@ void LCDDisplay10::clear()
 
 uint8_t LCDDisplay10::sendCommand(uint8_t command, uint8_t val)
 {
-    Wire.beginTransmission(0x038);
-    Wire.write(command);
-    Wire.write(val);
-    return Wire.endTransmission();
+    _wire->beginTransmission(0x38);
+    _wire->write(command);
+    _wire->write(val);
+    return _wire->endTransmission();
 }
 
 uint8_t LCDDisplay10::writeMemory(uint8_t addr, uint8_t val)
 {
-    Wire.beginTransmission(0x38);
-    Wire.write(0xe0);
-    Wire.write(addr);
-    Wire.write(val);
-    return Wire.endTransmission();
+    _wire->beginTransmission(0x38);
+    _wire->write(0xe0);
+    _wire->write(addr);
+    _wire->write(val);
+    return _wire->endTransmission();
 }
 
 void LCDDisplay10::fill(uint8_t c)
@@ -104,14 +105,14 @@ void LCDDisplay10::fillDigits(uint8_t c)
 
 uint8_t LCDDisplay10::sendBuffer()
 {
-    Wire.beginTransmission(0x38);
-    Wire.write(0xe0);
-    Wire.write((uint8_t)0);
+    _wire->beginTransmission(0x38);
+    _wire->write(0xe0);
+    _wire->write((uint8_t)0);
     for (uint8_t i = 0; i < BUFFER_SIZE; i++)
     {
-        Wire.write(_buffer[i]);
+        _wire->write(_buffer[i]);
     }
-    return Wire.endTransmission();
+    return _wire->endTransmission();
 }
 
 bool LCDDisplay10::writeToBuffer(const char *number)

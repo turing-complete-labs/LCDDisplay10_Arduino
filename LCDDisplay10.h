@@ -7,7 +7,12 @@
 
 #ifndef TEN_DIGIT_LCD_H
 #define TEN_DIGIT_LCD_H
+
+
 #include <stdint.h>
+#include <Arduino.h>
+#include <Wire.h>
+
 #define T_1 0b01000000
 #define T_2 0b00100000
 #define T_3 0b00010000
@@ -22,9 +27,10 @@ private:
      void fill(unsigned char ch);
      void fillDigits(unsigned char ch);
      uint8_t sendCommand(uint8_t command, uint8_t val);
+     TwoWire *_wire = NULL;
 
 public:
-     void begin(uint8_t sda = 21, uint8_t scl = 22);
+     void begin(TwoWire *theWire=&Wire);
      uint8_t writeMemory(uint8_t addr, uint8_t val);
      void clear();
      bool writeToBuffer(const char *number);
