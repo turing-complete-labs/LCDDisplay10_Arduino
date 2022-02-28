@@ -19,7 +19,10 @@ void setup()
   display.setNegative(true);
   display.setError(true);
   display.sendBuffer();
-  delay(2000);
+  delay(4000);
+  display.blink(0,1);
+  delay(4000);
+  display.blink(0,0);
 }
 
 void loop()
