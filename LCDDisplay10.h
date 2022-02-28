@@ -43,6 +43,7 @@ public:
      void setDigit(uint8_t pos, int8_t value);
      void setPointPos(uint8_t pos);
      void setThousands(uint8_t num);
+     void blink(uint8_t mode, uint8_t freq);
 };
 
 #endif
