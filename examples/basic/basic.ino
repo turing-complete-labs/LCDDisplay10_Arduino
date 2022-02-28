@@ -20,21 +20,7 @@ void setup()
   display.setError(true);
   display.sendBuffer();
   delay(4000);
-  display.blink(0,0);
-  delay(4000);
   display.blink(0,1);
-  delay(4000);
-  display.blink(0,2);
-  delay(4000);
-  display.blink(0,3);
-  delay(4000);
-  display.blink(0,0);
-  delay(4000);
-  display.blink(1,1);
-  delay(4000);
-  display.blink(1,2);
-  delay(4000);
-  display.blink(1,3);
   delay(4000);
   display.blink(0,0);
 }
