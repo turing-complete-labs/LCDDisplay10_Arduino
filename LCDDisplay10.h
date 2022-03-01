@@ -30,6 +30,19 @@ private:
      TwoWire *_wire = NULL;
 
 public:
+
+     enum blink_mode {
+	  STANDARD_BLINK,
+	  ALTERNATE_BLINK
+	};
+
+	enum blink_freq {
+	  NO_BLINK,
+	  BLINK_FAST,
+	  BLINK_NORMAL,
+	  BLINK_SLOW
+	};
+
      void begin(TwoWire *theWire=&Wire);
      uint8_t writeMemory(uint8_t addr, uint8_t val);
      void clear();
@@ -43,7 +56,7 @@ public:
      void setDigit(uint8_t pos, int8_t value);
      void setPointPos(uint8_t pos);
      void setThousands(uint8_t num);
-     void blink(uint8_t mode, uint8_t freq);
+     void blink(blink_freq freq=NO_BLINK, blink_mode mode=STANDARD_BLINK);
 };
 
 #endif
