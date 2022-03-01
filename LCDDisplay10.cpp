@@ -257,7 +257,7 @@ void LCDDisplay10::setThousands(uint8_t n)
 
 void LCDDisplay10::blink(blink_freq freq, blink_mode mode)
 {
-	uint8_t uMode = (uint8_t)mode << 2;
+    uint8_t uMode = (uint8_t)mode << 2;
     uint8_t command = 0b01110000 | uMode | freq ;
     sendCommand(0xe0, command);
 }
