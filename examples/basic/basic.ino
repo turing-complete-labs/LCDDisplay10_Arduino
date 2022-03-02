@@ -20,21 +20,13 @@ void setup()
   display.setError(true);
   display.sendBuffer();
   delay(4000);
-  display.blink(display.BLINK_FAST);
+  display.setBlink(display.BLINK_FAST);
   delay(4000);
-  display.blink(display.BLINK_NORMAL);
+  display.setBlink(display.BLINK_NORMAL);
   delay(4000);
-  display.blink(display.BLINK_SLOW);
+  display.setBlink(display.BLINK_SLOW);
   delay(4000);
-  display.blink(display.NO_BLINK);
-  delay(4000);
-  display.blink(display.BLINK_FAST, display.ALTERNATE_BLINK);
-  delay(4000);
-  display.blink(display.BLINK_NORMAL, display.ALTERNATE_BLINK);
-  delay(4000);
-  display.blink(display.BLINK_SLOW, display.ALTERNATE_BLINK);
-  delay(4000);
-  display.blink(display.NO_BLINK);
+  display.setBlink(display.NO_BLINK);
 }
 
 void loop()
