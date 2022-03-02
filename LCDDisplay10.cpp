@@ -255,9 +255,8 @@ void LCDDisplay10::setThousands(uint8_t n)
     _buffer[FLAGS + 1] = (oldValue | (onBits & 0xff)) & (offBits & 0xff);
 }
 
-void LCDDisplay10::blink(blink_freq freq, blink_mode mode)
+void LCDDisplay10::setBlink(blink_freq freq)
 {
-    uint8_t uMode = (uint8_t)mode << 2;
-    uint8_t command = 0b01110000 | uMode | freq ;
+    uint8_t command = 0b01110000 | freq ;
     sendCommand(0xe0, command);
 }
