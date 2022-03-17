@@ -41,14 +41,15 @@ public:
      void begin(TwoWire *theWire=&Wire);
      uint8_t writeMemory(uint8_t addr, uint8_t val);
      void clear();
-     bool writeToBuffer(const char *number);
+     bool writeToBuffer(const char *characters);
      uint8_t sendBuffer();
      void reset();
-     bool print(const char *number);
+     bool print(const char *characters);
      void setError(bool hasError);
      void setMemory(bool hasMemory);
      void setNegative(bool hasNegative);
      void setDigit(uint8_t pos, int8_t value);
+     void setChar(uint8_t pos, char ch);
      void setPointPos(uint8_t pos);
      void setThousands(uint8_t num);
      void setBlink(blink_freq freq);
