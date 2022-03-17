@@ -48,6 +48,7 @@ public:
      void setError(bool hasError);
      void setMemory(bool hasMemory);
      void setNegative(bool hasNegative);
+     void setDigit(uint8_t pos, int8_t value);
      void setChar(uint8_t pos, char ch);
      void setPointPos(uint8_t pos);
      void setThousands(uint8_t num);

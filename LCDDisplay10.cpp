@@ -277,6 +277,17 @@ void LCDDisplay10::setNegative(bool negativeFlag)
     _buffer[FLAGS] = negativeFlag ? _buffer[FLAGS] | SEG_Min : _buffer[FLAGS] & ~SEG_Min;
 }
 
+void LCDDisplay10::setDigit(uint8_t pos, int8_t value)
+{
+    if (pos < DIGITS)
+    {
+        _buffer[pos] = value >= 0 && value <= 9
+                           // preserve decimal pos
+                           ? (_buffer[pos] & SEG_P) | CHARACTERS[value]
+                           : 0;
+    }
+}
+
 void LCDDisplay10::setChar(uint8_t pos, char c)
 {
     int c_ascii = int(c);
